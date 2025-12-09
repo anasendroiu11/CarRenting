@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="ui.gui.HelloController"
+      spacing="10" prefWidth="950" prefHeight="700">
+
+    <TabPane VBox.vgrow="ALWAYS" tabClosingPolicy="UNAVAILABLE">
+
+        <Tab text="Car Management">
+            <VBox spacing="10">
+                <padding> <Insets top="10" right="10" bottom="10" left="10"/> </padding>
+
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Search Brand:"/>
+                    <TextField fx:id="filterField" promptText="Ex: Audi"/>
+                    <Button text="Filter" onAction="#onFilterCars"/>
+                    <Button text="Reset" onAction="#onResetCars"/>
+                </HBox>
+
+                <TableView fx:id="carTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colCarId" text="ID" prefWidth="50"/>
+                        <TableColumn fx:id="colCarBrand" text="Brand" prefWidth="150"/>
+                        <TableColumn fx:id="colCarModel" text="Model" prefWidth="250"/>
+                    </columns>
+                </TableView>
+
+                <Separator/>
+
+                <GridPane hgap="10" vgap="10">
+                    <Label text="ID:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <TextField fx:id="txtCarId" promptText="Unique ID" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                    <Label text="Brand:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                    <TextField fx:id="txtCarBrand" promptText="Brand Name" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+                    <Label text="Model:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <TextField fx:id="txtCarModel" promptText="Model Name" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                </GridPane>
+
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Button text="Add" onAction="#onAddCar"/>
+                    <Button text="Update" onAction="#onUpdateCar"/>
+                    <Button text="Delete" onAction="#onDeleteCar"/>
+                    <Button text="Clear Fields" onAction="#onClearFields"/>
+                </HBox>
+            </VBox>
+        </Tab>
+
+        <Tab text="Rental Management">
+            <VBox spacing="10">
+                <padding> <Insets top="10" right="10" bottom="10" left="10"/> </padding>
+
+                <TableView fx:id="rentalTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colRentId" text="ID" prefWidth="50"/>
+                        <TableColumn fx:id="colRentCar" text="Car (Brand/Model)" prefWidth="200"/>
+                        <TableColumn fx:id="colRentStart" text="Start Date" prefWidth="150"/>
+                        <TableColumn fx:id="colRentEnd" text="End Date" prefWidth="150"/>
+                    </columns>
+                </TableView>
+
+                <Separator/>
+
+                <Label text="Rental Editor" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <VBox spacing="2">
+                        <Label text="Rent ID"/>
+                        <TextField fx:id="txtRentId" prefWidth="70"/>
+                    </VBox>
+                    <VBox spacing="2">
+                        <Label text="Car ID"/>
+                        <TextField fx:id="txtRentCarId" prefWidth="70"/>
+                    </VBox>
+                    <VBox spacing="2">
+                        <Label text="Start (YYYY-MM-DD)"/>
+                        <TextField fx:id="txtRentStart" promptText="2024-01-01" prefWidth="120"/>
+                    </VBox>
+                    <VBox spacing="2">
+                        <Label text="End (YYYY-MM-DD)"/>
+                        <TextField fx:id="txtRentEnd" promptText="2024-01-10" prefWidth="120"/>
+                    </VBox>
+                </HBox>
+
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Button text="Add Rental" onAction="#onAddRental"/>
+                    <Button text="Update" onAction="#onUpdateRental"/>
+                    <Button text="Delete" onAction="#onDeleteRental"/>
+                    <Button text="Clear Fields" onAction="#onClearRentFields"/>
+                </HBox>
+            </VBox>
+        </Tab>
+
+        <Tab text="Reports">
+            <TabPane tabClosingPolicy="UNAVAILABLE">
+                <Tab text="Top Cars">
+                    <VBox spacing="10" style="-fx-padding: 10;">
+                        <Label text="Most Rented Models (Descending)"/>
+                        <ListView fx:id="listReportMostRented" VBox.vgrow="ALWAYS"/>
+                    </VBox>
+                </Tab>
+                <Tab text="Busy Months">
+                    <VBox spacing="10" style="-fx-padding: 10;">
+                        <Label text="Rentals per Month"/>
+                        <ListView fx:id="listReportMonths" VBox.vgrow="ALWAYS"/>
+                    </VBox>
+                </Tab>
+                <Tab text="Total Days">
+                    <VBox spacing="10" style="-fx-padding: 10;">
+                        <Label text="Cars by Total Rental Days"/>
+                        <ListView fx:id="listReportDays" VBox.vgrow="ALWAYS"/>
+                    </VBox>
+                </Tab>
+            </TabPane>
+        </Tab>
+    </TabPane>
+</VBox>
