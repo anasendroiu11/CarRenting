@@ -190,7 +190,7 @@ public class HelloController {
             onClearRentFields();
 
         } catch (DateTimeParseException dtpe) {
-            showAlert("Invalid Date Format", "Please use the format: YYYY-MM-DD\nExample: 2024-05-20");
+            showAlert("Invalid Date Format", "Please use the format: YYYY-MM-DD\nExample: 2024-01-01");
         } catch (NumberFormatException nfe) {
             showAlert("Number Error", "IDs must be valid integers.");
         } catch (Exception e) {

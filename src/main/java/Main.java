@@ -26,6 +26,10 @@ public class Main {
             case "binary" -> new BinaryFileRepository<>(Path.of(settings.getCarsPath()));
             case "text" -> new TextFileRepository<>(Path.of(settings.getCarsPath()), new CarFactory());
             case "sql" -> new SQLRepository<>(settings.getDatabasePath(), new CarFactory(), "Cars");
+            case "nosql", "mongodb" -> new NoSQLRepository<>(
+                    settings.getMongoURL(),
+                    settings.getMongoDbName(),
+                    "cars");
             default -> throw new IllegalArgumentException("Unknown repository type: " + repoType);
         };
 
@@ -34,6 +38,10 @@ public class Main {
             case "binary" -> new BinaryFileRepository<>(Path.of(settings.getRentalsPath()));
             case "text" -> new TextFileRepository<>(Path.of(settings.getRentalsPath()), new RentalFactory());
             case "sql" -> new SQLRepository<>(settings.getDatabasePath(), new RentalFactory(), "Rentals");
+            case "nosql", "mongodb" -> new NoSQLRepository<>(
+                    settings.getMongoURL(),
+                    settings.getMongoDbName(),
+                    "rentals");
             default -> throw new IllegalArgumentException("Unknown repository type: " + repoType);
         };
 

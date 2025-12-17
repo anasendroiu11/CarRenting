@@ -43,4 +43,12 @@ public class Settings {
     public String getRentalsPath() {
         return properties.getProperty("RentalsFile", "rentals.txt");
     }
+
+    public String getMongoURL() {
+        return properties.getProperty("MongoURL", "mongodb://localhost:27017");
+    }
+
+    public String getMongoDbName() {
+        return properties.getProperty("MongoDbName", "CarRentalDB");
+    }
 }
